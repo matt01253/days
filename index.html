@@ -3,27 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>Countdown</title>
+
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: sans-serif;
+      padding: 0;
+      background: transparent !important;
+    }
+
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background: transparent;
+      padding: 12px;
+      font-family: sans-serif;
     }
+
     #countdown {
-      font-size: 2rem;
-      font-weight: bold;
+      font-size: 1.4rem;
+      font-weight: 600;
+      background: transparent;
+      white-space: nowrap;
+    }
+
+    /* Optional: auto-adapt to system theme */
+    @media (prefers-color-scheme: dark) {
+      #countdown { color: white; }
+    }
+
+    @media (prefers-color-scheme: light) {
+      #countdown { color: black; }
     }
   </style>
 </head>
+
 <body>
   <div id="countdown"></div>
 
   <script>
-    // Target date: Thursday 2 July 2026 at 16:05 (UK time - BST, UTC+1)
+    // Thursday 2 July 2026 at 16:05 (UK time, BST UTC+1)
     const targetDate = new Date("2026-07-02T16:05:00+01:00");
 
     function updateCountdown() {
@@ -44,8 +62,8 @@
         `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    setInterval(updateCountdown, 1000);
     updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
